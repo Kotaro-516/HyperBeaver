@@ -20,7 +20,7 @@
  <button type="submit" name="buttonId" value="c200">得意先登録</button><br>
  <button type="submit" name="buttonId" value="c300">得意先削除</button><br>
  <button type="submit" name="buttonId" value="c400" disabled="disabled">得意先変更</button><br>
- <button type="submit" name="buttonId" value="c500" disabled="disabled">得意先一覧</button><br>
+ <button type="submit" name="buttonId" value="c500">得意先一覧</button><br>
 </form>
 </div>
 

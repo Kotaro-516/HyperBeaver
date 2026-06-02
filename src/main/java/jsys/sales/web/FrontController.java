@@ -74,9 +74,9 @@ public class FrontController extends HttpServlet {
 				page = action.execute(request);
 				break;
 
-			case "500":
+			case "c500":
 				//画面一覧表示の遷移をする
-				page = "V205_01CustomerFindAllActioon.jsp";
+				page = "V205_01CustomerFindAllResultView.jsp";
 				break;
 
 			default:
