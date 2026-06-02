@@ -53,8 +53,16 @@ public class FrontController extends HttpServlet {
 				page = action.execute(request);
 				break;
 			case "c100":
-				// 得意先管理メニューへ遷移（デフォルト）
+				// メインメニュー（システム選択画面）へ遷移
+				page = "V101_01SystemSelect.jsp";
+				break;
+			case "c110":
+				// 得意先管理メニューへ遷移
 				page = "V200_01CustomerManagementMenu.jsp";
+				break;
+			case "c310":
+				// 売上集計メニューへ遷移
+				page = "V300_01CustomerSummaryMenu.jsp";
 				break;
 			case "c101":
 				// 得意先検索画面を表示するだけ（Actionは呼ばない）
@@ -68,7 +76,7 @@ public class FrontController extends HttpServlet {
 
 			default:
 				// buttonIdが存在しない場合
-				page = "V200_01CustomerManagementMenu.jsp";
+				page = "V101_01SystemSelect.jsp";
 		}
 		// 結果画面に転送
 		RequestDispatcher rd = request.getRequestDispatcher(path + page);

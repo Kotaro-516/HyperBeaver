@@ -28,7 +28,7 @@ public class LoginAction implements ActionIF {
 	 */
 	public String execute(HttpServletRequest request) {
 		// 遷移先ページ名の設定
-		String page = "V200_01CustomerManagementMenu.jsp";
+		String page = "V101_01SystemSelect.jsp";
 		try {
 			// パラメータの取得
 			String empNo = request.getParameter("empNo");
