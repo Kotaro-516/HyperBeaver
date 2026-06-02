@@ -145,7 +145,33 @@ public class CustomerDAO {
 		return result;
 	}
 
+	/**
+	 * 得意先情報を削除する（論理削除）。
+	 *
+	 * @param custCode 得意先コード
+	 * @return 削除できた場合は更新件数（通常は1）、それ以外は0
+	 * @throws SQLException データベースアクセス処理で例外が発生した場合
+	 */
+	public int deleteCustomer(String custCode) throws SQLException {
+		String sql = "UPDATE customer SET delete_flag = 1 WHERE customer_code = ? AND delete_flag = 0";
+		PreparedStatement stmt = null;
+		int result = 0;
 
+		try {
+			// PreparedStatementの作成
+			stmt = con.prepareStatement(sql);
+			// パラメータの設定
+			stmt.setString(1, custCode);
+			// SQL文の実行
+			result = stmt.executeUpdate();
 
+		} finally {
+			// クローズ処理
+			if (stmt != null) {
+				stmt.close();
+			}
+		}
 
+		return result;
+	}
 }

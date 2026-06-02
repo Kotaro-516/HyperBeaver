@@ -73,6 +73,15 @@ public class FrontController extends HttpServlet {
 				// 売上集計メニューへ遷移
 				page = "V300_01CustomerSummaryMenu.jsp";
 				break;
+			case "c300":
+				// 得意先削除画面へ遷移
+				page = "V204_01CustomerDeleteView.jsp";
+				break;
+			case "c301":
+				// 得意先削除処理を実行する
+				action = new CustomerDeleteAction();
+				page = action.execute(request);
+				break;
 			case "c101":
 				// 得意先検索画面を表示するだけ（Actionは呼ばない）
 				page = "V201_01CustomerFindView.jsp";

@@ -13,7 +13,17 @@
 <body>
 <jsp:include page="Header.jsp" />
 	<div style="text-align:center">
-		<h2>得意先削除結果画面</h2>
+		<h2>得意先削除結果</h2>
+		<div style="color:blue; font-weight:bold; margin-bottom:15px;">
+			<c:choose>
+				<c:when test="${requestScope.result}">
+					得意先情報を削除しました。
+				</c:when>
+				<c:otherwise>
+					得意先情報の削除に失敗しました。
+				</c:otherwise>
+			</c:choose>
+		</div>
 		<form action="/jsys_sales/jsysFC">
 	得意先コード：<c:out value="${requestScope.customer.custCode }" /><br/>
 	得意先名：<c:out value="${requestScope.customer.custName }" /><br/>
@@ -25,13 +35,13 @@
 	</div>
 	<div style="text-align:right">
 		<form action="/jsys_sales/jsysFC" method="post">
-			<button type="submit" name="buttonId" value="c101">得意先削除へ</button>
+			<button type="submit" name="buttonId" value="c300">得意先削除へ</button>
 		</form>
 	</div>
 
 <jsp:include page="Help.jsp">
 	<jsp:param name="title" value="得意先削除結果の操作ヘルプ" />
-	<jsp:param name="content" value="削除条件に一致した得意先の詳細情報が表示されています。&lt;br&gt;「得意先削除へ」をクリックすると削除画面に戻ることができます。" />
+	<jsp:param name="content" value="削除条件に一致した得意先の詳細情報が表示されています。<br>「得意先削除へ」をクリックすると削除画面に戻ることができます。" />
 </jsp:include>
 
 </body>

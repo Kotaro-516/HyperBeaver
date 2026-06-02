@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpSession;
 
 import jsys.sales.common.*;
 import jsys.sales.logic.*;
+import jsys.sales.entity.Customer;
 
 public class CustomerDeleteAction implements ActionIF {
 
@@ -26,6 +27,11 @@ public class CustomerDeleteAction implements ActionIF {
             if (custCode == null || custCode.isEmpty()) {
                 throw new SalesBusinessException("得意先番号が未入力です。");
             }
+
+            // 削除前の情報取得（結果画面表示用）
+            CustomerFindLogic findLogic = new CustomerFindLogic();
+            Customer customer = findLogic.findCustomer(custCode);
+            request.setAttribute("customer", customer);
 
             // Logic呼び出し
             CustomerDeleteLogic logic = new CustomerDeleteLogic();
