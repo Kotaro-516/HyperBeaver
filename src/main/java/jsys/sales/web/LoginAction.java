@@ -28,7 +28,7 @@ public class LoginAction implements ActionIF {
 	 */
 	public String execute(HttpServletRequest request) {
 		// 遷移先ページ名の設定
-		String page = "V101_01SystemSelect.jsp";
+		String page = "SystemSelect.jsp";
 		try {
 			// パラメータの取得
 			String empNo = request.getParameter("empNo");
@@ -39,10 +39,10 @@ public class LoginAction implements ActionIF {
 			// エラーメッセージリストの生成
 			ArrayList<String> errorMessageList = new ArrayList<>();
 			if (empNo == null || empNo.equals("")) {
-				errorMessageList.add("従業員番号かパスワードが未入力です。");
+				errorMessageList.add("従業員番号またはパスワードが未入力です。");
 			}
 			if (password == null || password.equals("")) {
-				errorMessageList.add("従業員番号かパスワードが未入力です。");
+				errorMessageList.add("従業員番号またはパスワードが未入力です。");
 			}
 			if (!errorMessageList.isEmpty()) {
 				throw new SalesBusinessException(errorMessageList);
@@ -62,13 +62,13 @@ public class LoginAction implements ActionIF {
 			request.setAttribute("errorMessage", e.getMessage());
 			request.setAttribute("errorMessageList", e.getMessageList());
 			// 遷移先ページ名の設定
-			page = "V100_01LoginEmployee.jsp";
+			page = "EmployeeLoginPage.jsp";
 		} catch (SalesSystemException e) {
 			// システムエラー発生時
 			// エラーメッセージをリクエストスコープに格納
 			request.setAttribute("errorMessage", e.getMessage());
 			// 遷移先ページ名の設定
-			page = "V901_01SystemErrorPage.jsp";
+			page = "SystemErrorPage.jsp";
 		}
 		return page;
 	}
