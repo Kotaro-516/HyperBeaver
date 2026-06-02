@@ -153,8 +153,8 @@
 
 	<!-- ドロップダウンメニュー -->
 	<nav class="mobile-menu" id="mobileMenu">
+		<a href="/jsys_sales/jsysFC?buttonId=c100" id="mainMenuLink">メインメニュー</a>
 		<a href="/jsys_sales/jsysFC?buttonId=c002" id="logoutLink">ログアウト</a>
-		<a href="#" id="helpLink">操作説明ヘルプ</a>
 	</nav>
 </div>
 
@@ -163,8 +163,6 @@
 	(function() {
 		const hamburger = document.getElementById('hamburger');
 		const mobileMenu = document.getElementById('mobileMenu');
-		const helpLink = document.getElementById('helpLink');
-		const helpBtn = document.getElementById('helpBtn'); // 各ページのHelp.jspで定義されているフローティング？ボタン
 
 		if (hamburger && mobileMenu) {
 			// 1. 開閉の切り替え
@@ -177,20 +175,6 @@
 			// 2. メニュー外クリック時に閉じる
 			document.addEventListener('click', (e) => {
 				if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
-					mobileMenu.classList.remove('show');
-					hamburger.classList.remove('active');
-				}
-			});
-		}
-
-		// 3. ヘルプリンクのクリックイベント（JSP側にある浮遊？ボタンをクリックさせる）
-		if (helpLink) {
-			helpLink.addEventListener('click', (e) => {
-				e.preventDefault();
-				if (helpBtn) {
-					helpBtn.click(); // ページ個別のヘルプダイアログを開く
-				}
-				if (mobileMenu && hamburger) {
 					mobileMenu.classList.remove('show');
 					hamburger.classList.remove('active');
 				}
