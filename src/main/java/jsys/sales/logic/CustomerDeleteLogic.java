@@ -33,10 +33,10 @@ public class CustomerDeleteLogic {
 
 			// DAOを生成し、メソッドを呼び出す
 			CustomerDAO customerDAO = new CustomerDAO(con);
-			int rows = customerDAO.deleteCustomer(custCode);
+			boolean isDeleted = customerDAO.deleteCustomer(custCode);
 
 			// 検索結果がない場合、業務エラーを発生させる
-			if (rows != 1) {
+			if (!isDeleted) {
 				throw new SalesBusinessException("得意先は存在しないか、既に削除されています。");
 			}
 

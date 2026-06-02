@@ -152,10 +152,10 @@ public class CustomerDAO {
 	 * @return 削除できた場合は更新件数（通常は1）、それ以外は0
 	 * @throws SQLException データベースアクセス処理で例外が発生した場合
 	 */
-	public int deleteCustomer(String custCode) throws SQLException {
+	public boolean deleteCustomer(String custCode) throws SQLException {
 		String sql = "UPDATE customer SET delete_flag = 1 WHERE customer_code = ? AND delete_flag = 0";
 		PreparedStatement stmt = null;
-		int result = 0;
+		boolean result = false;
 
 		try {
 			// PreparedStatementの作成
@@ -163,15 +163,15 @@ public class CustomerDAO {
 			// パラメータの設定
 			stmt.setString(1, custCode);
 			// SQL文の実行
-			result = stmt.executeUpdate();
-
+			int count = stmt.executeUpdate();
+			if (count == 1) {
+				result = true;
+			}
 		} finally {
 			// クローズ処理
-			if (stmt != null) {
-				stmt.close();
-			}
+			if(stmt != null) stmt.close();
 		}
-
 		return result;
 	}
+
 }
