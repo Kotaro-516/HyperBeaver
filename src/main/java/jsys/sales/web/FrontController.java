@@ -60,6 +60,10 @@ public class FrontController extends HttpServlet {
 				// 得意先管理メニューへ遷移
 				page = "V200_01CustomerManagementMenu.jsp";
 				break;
+			case "c200":
+				//得意先登録画面へ遷移
+				page = "V202_01CustomerRegistView.jsp";
+				break;
 			case "c310":
 				// 売上集計メニューへ遷移
 				page = "V300_01CustomerSummaryMenu.jsp";
