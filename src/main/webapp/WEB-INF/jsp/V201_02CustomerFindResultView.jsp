@@ -31,7 +31,7 @@
 
 <jsp:include page="Help.jsp">
 	<jsp:param name="title" value="得意先検索結果の操作ヘルプ" />
-	<jsp:param name="content" value="検索条件に一致した得意先の詳細情報が表示されています。&lt;br&gt;「得意先検索へ」をクリックすると検索入力画面に戻ることができます。" />
+	<jsp:param name="content" value="検索条件に一致した得意先の詳細情報が表示されています。<br>「得意先検索へ」をクリックすると検索入力画面に戻ることができます。" />
 </jsp:include>
 
 </body>

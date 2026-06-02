@@ -39,7 +39,7 @@
 
 <jsp:include page="Help.jsp">
 	<jsp:param name="title" value="得意先検索の操作ヘルプ" />
-	<jsp:param name="content" value="検索したい得意先の「得意先コード（半角英数字6桁）」を入力し、「検索」ボタンをクリックしてください。&lt;br&gt;（例: KA0001 など）" />
+	<jsp:param name="content" value="検索したい得意先の「得意先コード（半角英数字6桁）」を入力し、「検索」ボタンをクリックしてください。<br>（例: KA0001 など）" />
 </jsp:include>
 
 </body>
