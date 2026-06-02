@@ -53,4 +53,3 @@ public class CustomerDeleteAction implements ActionIF {
         return page;
     }
 }
-``
