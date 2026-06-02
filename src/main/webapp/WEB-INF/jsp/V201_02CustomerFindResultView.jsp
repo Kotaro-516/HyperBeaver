@@ -11,6 +11,7 @@
 <title>得意先検索結果</title>
 </head>
 <body>
+<jsp:include page="Header.jsp" />
 	<div style="text-align:center">
 		<h2>得意先検索結果画面</h2>
 		<form action="/jsys_sales/jsysFC">
@@ -27,5 +28,11 @@
 			<button type="submit" name="buttonId" value="c101">得意先検索へ</button>
 		</form>
 	</div>
+
+<jsp:include page="Help.jsp">
+	<jsp:param name="title" value="得意先検索結果の操作ヘルプ" />
+	<jsp:param name="content" value="検索条件に一致した得意先の詳細情報が表示されています。&lt;br&gt;「得意先検索へ」をクリックすると検索入力画面に戻ることができます。" />
+</jsp:include>
+
 </body>
 </html>

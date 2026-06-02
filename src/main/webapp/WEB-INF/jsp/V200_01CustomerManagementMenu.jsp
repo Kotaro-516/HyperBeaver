@@ -11,6 +11,7 @@
 <title>得意先管理メニュー</title>
 </head>
 <body>
+<jsp:include page="Header.jsp" />
 <div style="text-align:center">
 <h2>得意先管理メニュー</h2>
 <button type="submit" name="buttonId" value="c100">メインメニューへ戻る</button>
@@ -22,6 +23,11 @@
  <button type="submit" name="buttonId" value="c500" disabled="disabled">得意先一覧</button><br>
 </form>
 </div>
+
+<jsp:include page="Help.jsp">
+	<jsp:param name="title" value="得意先管理メニューの操作ヘルプ" />
+	<jsp:param name="content" value="得意先管理の各メニュー（検索・登録・削除）へ遷移するための画面です。行いたい操作のボタンをクリックしてください。" />
+</jsp:include>
 
 </body>
 </html>

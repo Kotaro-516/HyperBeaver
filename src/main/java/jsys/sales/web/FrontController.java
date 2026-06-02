@@ -42,6 +42,11 @@ public class FrontController extends HttpServlet {
 			case "c000":
 				page = "EmployeeLoginPage.jsp";
 				break;
+			case "c001":
+				// ログイン処理を実行する
+				action = new LoginAction();
+				page = action.execute(request);
+				break;
 			case "c100":
 				// 得意先管理メニューへ遷移（デフォルト）
 				page = "V200_01CustomerManagementMenu.jsp";

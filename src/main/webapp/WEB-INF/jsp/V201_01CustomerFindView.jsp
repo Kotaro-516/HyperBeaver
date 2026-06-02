@@ -11,6 +11,7 @@
 <title>得意先検索画面</title>
 </head>
 <body>
+<jsp:include page="Header.jsp" />
 <div style="text-align:center">
  <h2>得意先検索</h2><br>
  得意先番号を入力して、検索ボタンをクリックしてください。
@@ -35,5 +36,11 @@
   </form>
  </div>
 </div>
+
+<jsp:include page="Help.jsp">
+	<jsp:param name="title" value="得意先検索の操作ヘルプ" />
+	<jsp:param name="content" value="検索したい得意先の「得意先コード（半角英数字6桁）」を入力し、「検索」ボタンをクリックしてください。&lt;br&gt;（例: KA0001 など）" />
+</jsp:include>
+
 </body>
 </html>

@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import jsys.sales.entity.Employee;
 
 public class EmployeeDAO {
@@ -32,47 +31,16 @@ public class EmployeeDAO {
 	/**
 	 * 従業員を検索する。
 	 *
-	 * @param empId
+	 * @param empNo
+	 * @param password
 	 *            従業員番号
 	 * @return 従業員
 	 * @throws SQLException
 	 *             データベースエラーが発生した場合
 	 */
-	public Employee findEmployee(String empNo) throws SQLException {
-		String sql = "SELECT employee_no,employee_name, "
-				+ "FROM employee WHERE employee_no = ?";
-		PreparedStatement stmt = null;
-		ResultSet res = null;
-		Employee employee = null;
-
-		try {
-			// PreparedStatementの作成
-			stmt = con.prepareStatement(sql);
-			// パラメータの設定
-			stmt.setString(1, empNo);
-			// SQL文の実行
-			res = stmt.executeQuery();
-			// 結果セットから情報を取り出す
-			if (res.next()) {
-				// Employeeオブジェクトの生成
-				employee = new Employee(res.getString("employee_no"), res.getString("employee_name"), res.getString("password"));
-			}
-
-		} finally {
-			// クローズ処理
-			if (res != null) {
-				res.close();
-			}
-			if (stmt != null) {
-				stmt.close();
-			}
-		}
-
-		return employee;
-	}
-
+	
 	public Employee findEmployee(String empNo, String password) throws SQLException {
-		String sql = "SELECT employee_no,employee_name, "
+		String sql = "SELECT employee_no, employee_name, password "
 				+ "FROM employee WHERE employee_no = ? AND password = ?";
 		PreparedStatement stmt = null;
 		ResultSet res = null;
