@@ -25,7 +25,7 @@
  
  <div style="text-align:center">
  <form action="/jsys_sales/jsysFC" method="post">
-  得意先コード<input type="text" name="custCode" value="<c:out value="${ param.custCode }"/>"> <br>
+  得意先コード<input type="text" name="custCode" value="<c:out value="${ param.custCode }"/>" placeholder="例：KA0001"> <br>
   <button type="submit" name="buttonId" value="c102">検索</button><br>
   </form>
  </div>
