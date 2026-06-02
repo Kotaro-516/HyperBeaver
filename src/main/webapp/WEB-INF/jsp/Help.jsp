@@ -41,7 +41,7 @@
 		height: 100%;
 		background-color: rgba(0, 0, 0, 0.5);
 		backdrop-filter: blur(3px);
-		z-index: 1000;
+		z-index: 2000;
 		opacity: 0;
 		transition: opacity 0.3s ease;
 	}

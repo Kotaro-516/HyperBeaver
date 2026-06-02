@@ -19,6 +19,7 @@
 		margin-bottom: 25px;
 		font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
 		position: relative;
+		z-index: 100;
 	}
 	.header-left {
 		display: flex;
