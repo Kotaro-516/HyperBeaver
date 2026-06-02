@@ -28,7 +28,7 @@ public class LoginAction implements ActionIF {
 	 */
 	public String execute(HttpServletRequest request) {
 		// 遷移先ページ名の設定
-		String page = "EmployeeMenu.jsp";
+		String page = "V200_01CustomerManagementMenu.jsp";
 		try {
 			// パラメータの取得
 			String empNo = request.getParameter("empNo");
@@ -62,13 +62,13 @@ public class LoginAction implements ActionIF {
 			request.setAttribute("errorMessage", e.getMessage());
 			request.setAttribute("errorMessageList", e.getMessageList());
 			// 遷移先ページ名の設定
-			page = "EmployeeLoginPage.jsp";
+			page = "V100_01LoginEmployee.jsp";
 		} catch (SalesSystemException e) {
 			// システムエラー発生時
 			// エラーメッセージをリクエストスコープに格納
 			request.setAttribute("errorMessage", e.getMessage());
 			// 遷移先ページ名の設定
-			page = "SystemErrorPage.jsp";
+			page = "V901_01SystemErrorPage.jsp";
 		}
 		return page;
 	}
