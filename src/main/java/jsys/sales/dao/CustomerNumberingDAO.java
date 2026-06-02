@@ -43,9 +43,7 @@ public class CustomerNumberingDAO {
 			// 結果セットから情報を取り出す
 			if (res.next()) {
 				// CustomerNumberingオブジェクトの生成
-				numbering = new CustomerNumbering(
-						res.getInt("customer_code")
-						);
+				numbering = new CustomerNumbering(res.getInt("customer_code"));
 			}
 
 		} finally {
