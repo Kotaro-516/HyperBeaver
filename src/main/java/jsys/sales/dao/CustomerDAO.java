@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import jsys.sales.entity.Customer;
 
 /**
@@ -172,6 +173,46 @@ public class CustomerDAO {
 			if(stmt != null) stmt.close();
 		}
 		return result;
+	}
+
+	public ArrayList<Customer> findAllCustomer() throws SQLException {
+
+        String sql = "SELECT customer_code, customer_name, customer_telNo, "
+        + "customer_postalCode, customer_address, discount_rate "
+        + "FROM customer WHERE delete_flag = false";
+
+
+        PreparedStatement stmt = null;
+        ResultSet res = null;
+
+        ArrayList<Customer> customerList = new ArrayList<>();
+
+
+        try {
+            stmt = con.prepareStatement(sql);
+            res = stmt.executeQuery();
+
+            while (res.next()) {
+                Customer customer = new Customer(
+                    res.getString("customer_code"),
+                    res.getString("customer_name"),
+                    res.getString("customer_telNo"),
+                    res.getString("customer_postalCode"),
+                    res.getString("customer_address"),
+                    res.getInt("discount_rate")
+                );
+                customerList.add(customer);
+			}
+		} finally {
+			// クローズ処理
+			if (res != null) {
+				res.close();
+			}
+			if (stmt != null) {
+				stmt.close();
+			}
+		}
+		return customerList;
 	}
 
 }
