@@ -44,7 +44,7 @@ public class LoginLogic {
 			employee = employeeDAO.findEmployee(empNo, password);
 			// 戻り値がnullの場合、業務エラーを発生させる
 			if (employee == null) {
-				throw new SalesBusinessException("ログインに失敗しました。");
+				throw new SalesBusinessException("ログインに失敗しました。\n従業員コードまたはパスワードを確認してください。");
 			}
 		} catch (SQLException e) {
 			// データベースエラーの場合、システムエラーを発生させる

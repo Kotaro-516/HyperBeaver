@@ -40,7 +40,7 @@ public class FrontController extends HttpServlet {
 		// リクエスト種別の判定
 		switch (buttonId) {
 			case "c000":
-				page = "EmployeeLoginPage.jsp";
+				page = "V100_01LoginEmployee.jsp";
 				break;
 			case "c001":
 				// ログイン処理を実行する
