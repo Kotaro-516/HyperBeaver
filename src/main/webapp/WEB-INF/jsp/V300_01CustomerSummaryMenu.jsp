@@ -19,7 +19,7 @@
 
 <jsp:include page="Help.jsp">
 	<jsp:param name="title" value="売上集計メニューの操作ヘルプ" />
-	<jsp:param name="content" value="売上集計システムの初期画面です。現在は開発中のため、操作を行うことはできません。&lt;br&gt;「メインメニューへ戻る」ボタンを押して、システム選択画面にお戻りください。" />
+	<jsp:param name="content" value="売上集計システムの初期画面です。現在は開発中のため、操作を行うことはできません。<br>「メインメニューへ戻る」ボタンを押して、システム選択画面にお戻りください。" />
 </jsp:include>
 
 </body>

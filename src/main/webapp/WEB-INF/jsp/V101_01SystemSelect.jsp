@@ -19,7 +19,7 @@
 
 <jsp:include page="Help.jsp">
 	<jsp:param name="title" value="システム選択の操作ヘルプ" />
-	<jsp:param name="content" value="利用するシステムを選択してください。&lt;br&gt;・得意先管理システム：得意先情報の検索、登録、削除などを行います。&lt;br&gt;・売上集計システム：売上情報の集計や確認を行います。" />
+	<jsp:param name="content" value="利用するシステムを選択してください。<ul><li><b>得意先管理システム</b>：得意先情報の検索、登録、削除などを行います。</li><li><b>売上集計システム</b>：売上情報の集計や確認を行います。</li></ul>" />
 </jsp:include>
 
 </body>
