@@ -187,7 +187,7 @@
 					       class="input-text discount-rate"
 					       name="discountRate"
 					       value="<c:out value="${param.discountRate}" />"
-					       maxlength="2"
+					       maxlength="4"
 					       placeholder="0">
 					<span class="percent-label">%</span>
 				</div>
