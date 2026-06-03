@@ -14,6 +14,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet(urlPatterns = { "/jsysFC" })
 public class FrontController extends HttpServlet {
@@ -37,6 +38,22 @@ public class FrontController extends HttpServlet {
 			// TODO 1 プロトタイピング作成演習：得意先管理メニュー画面のbuttonIdをデフォルトとして設定してください。
 			buttonId = "c000";
 		}
+
+		// ログイン画面表示（c000）およびログイン実行（c001）以外はセッションチェックを行う
+		if (!"c000".equals(buttonId) && !"c001".equals(buttonId)) {
+			HttpSession session = request.getSession(false);
+			if (session == null || session.getAttribute("loginEmployee") == null) {
+				// セッションが無効、またはログイン情報がない場合はログイン画面に強制遷移
+				request.setAttribute("errorMessage", "セッションが無効です。ログインしてください。");
+				page = "V100_01LoginEmployee.jsp";
+				
+				// 結果画面に転送して終了
+				RequestDispatcher rd = request.getRequestDispatcher(path + page);
+				rd.forward(request, response);
+				return;
+			}
+		}
+
 		// リクエスト種別の判定
 		switch (buttonId) {
 			case "c000":
