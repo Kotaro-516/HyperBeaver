@@ -181,7 +181,7 @@ public class CustomerDAO {
 
         String sql = "SELECT customer_code, customer_name, customer_telNo, "
         + "customer_postalCode, customer_address, discount_rate "
-        + "FROM customer WHERE delete_flag = false ORDER BY customer_code";
+        + "FROM customer WHERE delete_flag = 0 ORDER BY customer_code";
 
 
         PreparedStatement stmt = null;
