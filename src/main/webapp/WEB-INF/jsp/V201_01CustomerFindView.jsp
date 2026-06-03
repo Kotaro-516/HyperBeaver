@@ -32,7 +32,7 @@
  
  <div style="text-align:right">
   <form action="/jsys_sales/jsysFC" method="post">
-  <button type="submit" name="buttonId" value="c100">得意先管理メニューへ</button><br>
+  <button type="submit" name="buttonId" value="c110">得意先管理メニューへ</button><br>
   </form>
  </div>
 </div>
