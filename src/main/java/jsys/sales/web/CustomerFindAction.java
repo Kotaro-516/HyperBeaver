@@ -26,13 +26,14 @@ public class CustomerFindAction implements ActionIF{
 			HttpSession session = request.getSession(false);
 			if (session == null) { // セッションが存在しない
 				throw new SalesSystemException("セッションが無効です。");
+			} else {
+				Employee loginEmployee =
+						(Employee) session.getAttribute("loginEmployee");
+				if (loginEmployee == null) { // ログイン従業員情報が存在しない
+					throw new SalesSystemException("ログイン情報が存在しません。");
+				}
 			}
 
-			Employee loginEmployee =
-					(Employee) session.getAttribute("loginEmployee");
-			if (loginEmployee == null) { // ログイン従業員情報が存在しない
-				throw new SalesSystemException("ログイン情報が存在しません。");
-			}
 			// パラメータの取得
 			String custCode = request.getParameter("custCode");
 
