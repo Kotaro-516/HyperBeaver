@@ -154,7 +154,8 @@ public class CustomerDAO {
 	 * @throws SQLException データベースアクセス処理で例外が発生した場合
 	 */
 	public boolean deleteCustomer(String custCode) throws SQLException {
-		String sql = "UPDATE customer SET delete_flag = 1 WHERE customer_code = ? AND delete_flag = 0";
+		String sql
+				= "UPDATE customer SET delete_flag = 1 WHERE customer_code = ? AND delete_flag = 0";
 		PreparedStatement stmt = null;
 		boolean result = false;
 
@@ -170,7 +171,8 @@ public class CustomerDAO {
 			}
 		} finally {
 			// クローズ処理
-			if(stmt != null) stmt.close();
+			if (stmt != null)
+				stmt.close();
 		}
 		return result;
 	}

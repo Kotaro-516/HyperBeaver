@@ -1,7 +1,7 @@
 /**
  * All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited
  *
- * TestCustomerDAO04_01.java
+ * TestCustomerDAO03_01.java
  *
  */
 
@@ -33,11 +33,11 @@ public class TestCustomerDAO04_01 {
 		// ここからテストを行う。
 		try {
 			CustomerDAO custDAO = new CustomerDAO(con);
-			Customer customer = new Customer("KA0001", "テストストア2", "111-1111-1111", "111-1111", "東京都港区港南", 0);
-			boolean result = custDAO.updateCustomer(customer);
+			Customer customer = new Customer();
+			customer.setCustCode("KA0015");
+			boolean result = custDAO.deleteCustomer(customer.getCustCode());
 
 			System.out.println("結果:" + result);
-
 		} catch (SQLException e) {
 			System.out.println("SQLExceptionがスローされました。");
 			e.printStackTrace();

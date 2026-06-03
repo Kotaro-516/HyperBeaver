@@ -37,7 +37,7 @@ public class CustomerFindLogic {
 
 			// 検索結果がない場合、業務エラーを発生させる
 			if (customer == null) {
-				throw new SalesBusinessException("得意先は、存在しません。");
+				throw new SalesBusinessException("該当する得意先コードは存在しません。");
 			}
 		} catch (SQLException e) {
 			// データベースエラーの場合、システムエラーを発生させる
