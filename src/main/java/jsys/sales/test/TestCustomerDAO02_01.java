@@ -14,40 +14,39 @@ import jsys.sales.dao.ConnectionManager;
 import jsys.sales.dao.CustomerDAO;
 import jsys.sales.entity.Customer;
 
+/**
+ * PT002_02_001 電話番号検索が成功する場合
+ */
 public class TestCustomerDAO02_01 {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		Connection con = null;
 
-		// テストのための準備としてデータベースに接続する。
-
 		try {
+			// テストのための準備としてデータベースに接続する。
 			con = ConnectionManager.getConnection();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 
-		// ここからテストを行う。
-		try {
+			// ここからテストを行う。
 			CustomerDAO custDAO = new CustomerDAO(con);
-			Customer customer = new Customer("KA0016", "テストストア", "000-000-0000", "000-0000", "東京都大田区蒲田", 0);
-			Customer customer2 = custDAO.insertCustomer(customer);
+			Customer duplicateCustomer = custDAO.findCustomerByTelNo("045-128-3581");
 
-			System.out.println("得意先コード：" + customer2.getCustCode());
-			System.out.println("得意先名　　：" + customer2.getCustName());
-			System.out.println("電話番号　　：" + customer2.getTelNo());
-			System.out.println("郵便番号　　：" + customer2.getPostalCode());
-			System.out.println("住所　　　　：" + customer2.getAddress());
-			System.out.println("割引率　　　：" + customer2.getDiscountRate());
+			if (duplicateCustomer == null) {
+				System.out.println("戻り値：null");
+			} else {
+				System.out.println("得意先コード：" + duplicateCustomer.getCustCode());
+				System.out.println("得意先名　　：" + duplicateCustomer.getCustName());
+				System.out.println("電話番号　　：" + duplicateCustomer.getTelNo());
+				System.out.println("郵便番号　　：" + duplicateCustomer.getPostalCode());
+				System.out.println("住所　　　　：" + duplicateCustomer.getAddress());
+				System.out.println("割引率　　　：" + duplicateCustomer.getDiscountRate());
+			}
 
 		} catch (SQLException e) {
 			System.out.println("SQLExceptionがスローされました。");
 			e.printStackTrace();
 		} finally {
-			try {// データベースへの接続を切断する
+			try {
+				// データベースへの接続を切断する。
 				if (con != null) {
 					con.close();
 				}

@@ -1,7 +1,7 @@
 /**
  * All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited
  *
- * TestCustomerDAO03_02.java
+ * TestCustomerNumberingDAO02_01.java
  *
  */
 
@@ -11,13 +11,13 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import jsys.sales.dao.ConnectionManager;
-import jsys.sales.dao.CustomerDAO;
-import jsys.sales.entity.Customer;
+import jsys.sales.dao.CustomerNumberingDAO;
+import jsys.sales.entity.CustomerNumbering;
 
 /**
- * PT002_02_005 主キー重複により登録に失敗する場合
+ * PT002_02_009 採番情報更新が成功する場合
  */
-public class TestCustomerDAO03_02 {
+public class TestCustomerNumberingDAO02_01 {
 
 	public static void main(String[] args) {
 		Connection con = null;
@@ -27,14 +27,13 @@ public class TestCustomerDAO03_02 {
 			con = ConnectionManager.getConnection();
 
 			// ここからテストを行う。
-			CustomerDAO custDAO = new CustomerDAO(con);
-			Customer customer = new Customer(
-					"KA0001", "重複テストストア", "000-000-0001",
-					"000-0001", "東京都大田区蒲田", 0.0);
+			CustomerNumberingDAO custNumberingDAO = new CustomerNumberingDAO(con);
+			CustomerNumbering numbering = new CustomerNumbering(16);
 
-			custDAO.insertCustomer(customer);
+			boolean result = custNumberingDAO.updateCustomerCode(numbering);
 
-			System.out.println("SQLExceptionがスローされませんでした。");
+			System.out.println("更新結果：" + result);
+			System.out.println("更新した得意先採番コード：" + numbering.getCustCode());
 
 		} catch (SQLException e) {
 			System.out.println("SQLExceptionがスローされました。");

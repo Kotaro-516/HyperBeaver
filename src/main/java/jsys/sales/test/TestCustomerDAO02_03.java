@@ -1,7 +1,7 @@
 /**
  * All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited
  *
- * TestCustomerDAO03_02.java
+ * TestCustomerDAO02_03.java
  *
  */
 
@@ -12,12 +12,11 @@ import java.sql.SQLException;
 
 import jsys.sales.dao.ConnectionManager;
 import jsys.sales.dao.CustomerDAO;
-import jsys.sales.entity.Customer;
 
 /**
- * PT002_02_005 主キー重複により登録に失敗する場合
+ * PT002_02_003 findCustomerByTelNo() 実行時にSQLExceptionが発生する場合
  */
-public class TestCustomerDAO03_02 {
+public class TestCustomerDAO02_03 {
 
 	public static void main(String[] args) {
 		Connection con = null;
@@ -26,13 +25,13 @@ public class TestCustomerDAO03_02 {
 			// テストのための準備としてデータベースに接続する。
 			con = ConnectionManager.getConnection();
 
-			// ここからテストを行う。
+			/*
+			 * デバッグ実行で、次のメソッド呼出し直前に処理を停止する。
+			 * その後、データベースを停止する、またはcustomerテーブルを
+			 * 参照できない状態にしてから処理を再開する。
+			 */
 			CustomerDAO custDAO = new CustomerDAO(con);
-			Customer customer = new Customer(
-					"KA0001", "重複テストストア", "000-000-0001",
-					"000-0001", "東京都大田区蒲田", 0.0);
-
-			custDAO.insertCustomer(customer);
+			custDAO.findCustomerByTelNo("045-128-3581");
 
 			System.out.println("SQLExceptionがスローされませんでした。");
 
