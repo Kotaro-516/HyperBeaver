@@ -39,7 +39,7 @@ public class CustomerFindAction implements ActionIF{
 			// パラメータ未送信または未入力の場合
 			// SalesBusinessExceptionをスローする
 			if (custCode == null || custCode.equals("")) {
-				throw new SalesBusinessException("得意先番号が未入力です。");
+				throw new SalesBusinessException("得意先コードを入力してください。");
 			}
 
 			// 業務Logic呼び出し

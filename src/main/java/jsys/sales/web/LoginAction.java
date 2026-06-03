@@ -39,10 +39,10 @@ public class LoginAction implements ActionIF {
 			// エラーメッセージリストの生成
 			ArrayList<String> errorMessageList = new ArrayList<>();
 			if (empNo == null || empNo.equals("")) {
-				errorMessageList.add("従業員番号またはパスワードが未入力です。");
+				errorMessageList.add("従業員番号が未入力です。");
 			}
 			if (password == null || password.equals("")) {
-				errorMessageList.add("従業員番号またはパスワードが未入力です。");
+				errorMessageList.add("パスワードが未入力です。");
 			}
 			if (!errorMessageList.isEmpty()) {
 				throw new SalesBusinessException(errorMessageList);

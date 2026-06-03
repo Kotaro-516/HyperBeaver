@@ -23,7 +23,7 @@ public class LogoutAction implements ActionIF {
 		// 遷移先ページ名の設定
 		String page = "V100_01LoginEmployee.jsp";
 		// セッションの生成
-		HttpSession session = request.getSession(true);
+		HttpSession session = request.getSession(false);
 		// セッションの破棄
 		session.invalidate();
 		return page;
