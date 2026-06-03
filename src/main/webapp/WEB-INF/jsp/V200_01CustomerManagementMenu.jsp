@@ -14,8 +14,9 @@
 <jsp:include page="Header.jsp" />
 <div style="text-align:center">
 <h2>得意先管理メニュー</h2>
-<button type="submit" name="buttonId" value="c100">メインメニューへ戻る</button>
+
 <form action="/jsys_sales/jsysFC" method="post">
+ <button type="submit" name="buttonId" value="c100">メインメニューへ戻る</button><br>
  <button type="submit" name="buttonId" value="c101">得意先検索</button><br>
  <button type="submit" name="buttonId" value="c200">得意先登録</button><br>
  <button type="submit" name="buttonId" value="c300">得意先削除</button><br>
