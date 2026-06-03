@@ -80,13 +80,12 @@ public class CustomerRegistAction implements ActionIF {
 				errorMessageList.add("郵便番号は999-9999の形式で入力してください。");
 			}
 
-			// 割引率の形式チェック
-			int discountRate = 0;
+			double discountRate = 0.0;
 			if (discountRateString != null && !discountRateString.equals("")) {
 				try {
-					discountRate = Integer.parseInt(discountRateString);
+					discountRate = Double.parseDouble(discountRateString);
 
-					if (discountRate < 0 || discountRate > 99) {
+					if (discountRate < 0.0 || discountRate > 99.0) {
 						errorMessageList.add("割引率は0から99の範囲で入力してください。");
 					}
 				} catch (NumberFormatException e) {

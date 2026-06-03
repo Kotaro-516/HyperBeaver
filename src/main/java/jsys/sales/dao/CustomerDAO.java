@@ -47,7 +47,7 @@ public class CustomerDAO {
 				customer = new Customer(
 						res.getString("customer_code"), res.getString("customer_name"),
 						res.getString("customer_telNo"), res.getString("customer_postalCode"),
-						res.getString("customer_address"), res.getInt("discount_rate")
+						res.getString("customer_address"), res.getDouble("discount_rate")
 						);
 			}
 
@@ -90,7 +90,7 @@ public class CustomerDAO {
 				customer = new Customer(
 						res.getString("customer_code"), res.getString("customer_name"),
 						res.getString("customer_telNo"), res.getString("customer_postalCode"),
-						res.getString("customer_address"), res.getInt("discount_rate")
+						res.getString("customer_address"), res.getDouble("discount_rate")
 						);
 			}
 
@@ -128,7 +128,7 @@ public class CustomerDAO {
 			stmt.setString(3, customer.getTelNo());
 			stmt.setString(4, customer.getPostalCode());
 			stmt.setString(5, customer.getAddress());
-			stmt.setInt(6, customer.getDiscountRate());
+			stmt.setDouble(6, customer.getDiscountRate());
 			// SQL文の実行
 			int count = stmt.executeUpdate();
 			// 登録結果の判定
@@ -199,7 +199,7 @@ public class CustomerDAO {
                     res.getString("customer_telNo"),
                     res.getString("customer_postalCode"),
                     res.getString("customer_address"),
-                    res.getInt("discount_rate")
+                    res.getDouble("discount_rate")
                 );
                 customerList.add(customer);
 			}

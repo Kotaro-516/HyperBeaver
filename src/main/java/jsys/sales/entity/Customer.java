@@ -44,7 +44,7 @@ public class Customer implements Serializable{
 	 * @param discountRate 割引率
 	 */
 	public Customer(String custCode, String custName, String telNo,
-			String postalCode, String address,int discountRate) {
+			String postalCode, String address, double discountRate) {
 		this.custCode = custCode;
 		this.custName = custName;
 		this.telNo = telNo;
@@ -132,14 +132,14 @@ public class Customer implements Serializable{
 	 * 割引率を取得する。
 	 * @return 割引率
 	 */
-	public int getDiscountRate() {
+	public double getDiscountRate() {
 		return discountRate;
 	}
 	/**
 	 * 割引率を設定する。
 	 * @param discountRate 割引率
 	 */
-	public void setDiscountRate(int discountRate) {
+	public void setDiscountRate(double discountRate) {
 		this.discountRate = discountRate;
 	}
 }
