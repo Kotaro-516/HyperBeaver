@@ -61,7 +61,7 @@ public class CustomerFindAllAction implements ActionIF {
 			// エラーメッセージをリクエストスコープに格納
 			// 遷移先ページ名の設定
 			request.setAttribute("errorMessage", e.getMessage());
-			page = "SystemErrorPage.jsp";
+			page = "V901_01SystemErrorPage.jsp";
 		}
 		return page;
 	}

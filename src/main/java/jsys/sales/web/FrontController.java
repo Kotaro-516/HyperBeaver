@@ -99,7 +99,8 @@ public class FrontController extends HttpServlet {
 
 			case "c500":
 				//画面一覧表示の遷移をする
-				page = "V205_01CustomerFindAllResultView.jsp";
+				action = new CustomerFindAllAction();
+				page = action.execute(request);
 				break;
 
 			default:

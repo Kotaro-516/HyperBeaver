@@ -35,7 +35,7 @@ public class CustomerFindAllLogic {
 
 			// 検索結果がない場合、業務エラーを発生させる
 			if (customerList.isEmpty()) {
-				throw new SalesBusinessException("従業員リストが存在しません。");
+				throw new SalesBusinessException("得意先が登録されていないか、削除されています。");
 			}
 		} catch (SQLException e) {
 			// データベースエラーの場合、システムエラーを発生させる
