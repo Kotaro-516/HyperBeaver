@@ -41,6 +41,7 @@ public class CustomerDeleteFindAction implements ActionIF {
 			request.setAttribute("errorMessageList", e.getMessageList());
 		} catch (SalesSystemException e) {
 			request.setAttribute("errorMessage", e.getMessage());
+			page = "V901_01SystemErrorPage.jsp";
 		}
 
 		return page;
