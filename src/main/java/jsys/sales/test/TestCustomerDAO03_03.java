@@ -35,7 +35,7 @@ public class TestCustomerDAO03_03 {
 			CustomerDAO custDAO = new CustomerDAO(con);
 			Customer customer = new Customer();
 			customer.setCustCode("KA0002");
-			boolean result = custDAO.deleteCustomer(customer);
+			boolean result = custDAO.deleteCustomer(customer.getCustCode());
 
 			System.out.println("結果:" + result);
 		} catch (SQLException e) {

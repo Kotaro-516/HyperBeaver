@@ -26,7 +26,7 @@ public class Customer implements Serializable{
 	private String address;
 
 	/** 割引率 */
-	private int discountRate;
+	private double discountRate;
 
 	/**
 	 * コンストラクタ（引数なし）
