@@ -82,6 +82,11 @@ public class FrontController extends HttpServlet {
 				action = new CustomerDeleteAction();
 				page = action.execute(request);
 				break;
+			case "c302":
+				// 得意先削除のための事前検索を実行する
+				action = new CustomerDeleteFindAction();
+				page = action.execute(request);
+				break;
 			case "c101":
 				// 得意先検索画面を表示するだけ（Actionは呼ばない）
 				page = "V201_01CustomerFindView.jsp";
