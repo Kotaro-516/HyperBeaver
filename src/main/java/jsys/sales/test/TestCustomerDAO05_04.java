@@ -1,7 +1,7 @@
 /**
  * All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited
  *
- * TestCustomerDAO05_01.java
+ * TestCustomerDAO05_04.java
  *
  */
 
@@ -17,9 +17,9 @@ import jsys.sales.entity.Customer;
 
 
 /**
- * PT205_01_001 未削除の得意先が複数存在する場合
+ * PT205_01_004 得意先コード順に取得できる場合
  */
-public class TestCustomerDAO05_01 {
+public class TestCustomerDAO05_04 {
 
 	public static void main(String[] args) {
 		Connection con = null;
@@ -32,16 +32,20 @@ public class TestCustomerDAO05_01 {
 			CustomerDAO custDAO = new CustomerDAO(con);
 			ArrayList<Customer> customerList = custDAO.findAllCustomer();
 
-			System.out.println("取得件数：" + customerList.size());
+			System.out.println("取得された得意先コードの順序：");
 			for (Customer customer : customerList) {
-				System.out.println("------------------------------");
-				System.out.println("得意先コード：" + customer.getCustCode());
-				System.out.println("得意先名　　：" + customer.getCustName());
-				System.out.println("電話番号　　：" + customer.getTelNo());
-				System.out.println("郵便番号　　：" + customer.getPostalCode());
-				System.out.println("住所　　　　：" + customer.getAddress());
-				System.out.println("割引率　　　：" + customer.getDiscountRate());
+				System.out.println(customer.getCustCode());
 			}
+
+			/*
+			 * DB_04 の確認：
+			 * KA0003、KA0001、KA0002 の未削除データを準備して実行し、
+			 * 戻り値が KA0001 → KA0002 → KA0003 の順に
+			 * 表示されることを確認する。
+			 *
+			 * 本テストを満たすため、findAllCustomer() のSQLには
+			 * ORDER BY customer_code が必要である。
+			 */
 
 		} catch (SQLException e) {
 			System.out.println("SQLExceptionがスローされました。");

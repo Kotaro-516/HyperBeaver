@@ -1,7 +1,7 @@
 /**
  * All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited
  *
- * TestCustomerDAO05_01.java
+ * TestCustomerDAO05_02.java
  *
  */
 
@@ -17,9 +17,9 @@ import jsys.sales.entity.Customer;
 
 
 /**
- * PT205_01_001 未削除の得意先が複数存在する場合
+ * PT205_01_002 削除済みの得意先が存在する場合
  */
-public class TestCustomerDAO05_01 {
+public class TestCustomerDAO05_02 {
 
 	public static void main(String[] args) {
 		Connection con = null;
@@ -33,15 +33,20 @@ public class TestCustomerDAO05_01 {
 			ArrayList<Customer> customerList = custDAO.findAllCustomer();
 
 			System.out.println("取得件数：" + customerList.size());
+			System.out.println("取得された得意先コード：");
 			for (Customer customer : customerList) {
-				System.out.println("------------------------------");
-				System.out.println("得意先コード：" + customer.getCustCode());
-				System.out.println("得意先名　　：" + customer.getCustName());
-				System.out.println("電話番号　　：" + customer.getTelNo());
-				System.out.println("郵便番号　　：" + customer.getPostalCode());
-				System.out.println("住所　　　　：" + customer.getAddress());
-				System.out.println("割引率　　　：" + customer.getDiscountRate());
+				System.out.println(customer.getCustCode());
 			}
+
+			/*
+			 * DB_02 の確認：
+			 * KA0001：delete_flag = false
+			 * KA0002：delete_flag = true
+			 * KA0003：delete_flag = false
+			 *
+			 * 実行結果に KA0001 と KA0003 が表示され、
+			 * KA0002 が表示されないことを確認する。
+			 */
 
 		} catch (SQLException e) {
 			System.out.println("SQLExceptionがスローされました。");

@@ -1,7 +1,7 @@
 /**
  * All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited
  *
- * TestCustomerDAO05_01.java
+ * TestCustomerDAO05_05.java
  *
  */
 
@@ -17,9 +17,9 @@ import jsys.sales.entity.Customer;
 
 
 /**
- * PT205_01_001 未削除の得意先が複数存在する場合
+ * PT205_01_005 findAllCustomer() 実行時にSQLExceptionが発生する場合
  */
-public class TestCustomerDAO05_01 {
+public class TestCustomerDAO05_05 {
 
 	public static void main(String[] args) {
 		Connection con = null;
@@ -28,20 +28,16 @@ public class TestCustomerDAO05_01 {
 			// テストのための準備としてデータベースに接続する。
 			con = ConnectionManager.getConnection();
 
-			// ここからテストを行う。
 			CustomerDAO custDAO = new CustomerDAO(con);
-			ArrayList<Customer> customerList = custDAO.findAllCustomer();
 
-			System.out.println("取得件数：" + customerList.size());
-			for (Customer customer : customerList) {
-				System.out.println("------------------------------");
-				System.out.println("得意先コード：" + customer.getCustCode());
-				System.out.println("得意先名　　：" + customer.getCustName());
-				System.out.println("電話番号　　：" + customer.getTelNo());
-				System.out.println("郵便番号　　：" + customer.getPostalCode());
-				System.out.println("住所　　　　：" + customer.getAddress());
-				System.out.println("割引率　　　：" + customer.getDiscountRate());
-			}
+			/*
+			 * デバッグ実行で、次のメソッド呼出し直前に処理を停止する。
+			 * その後、データベースを停止する、またはcustomerテーブルを
+			 * 参照できない状態にしてから処理を再開する。
+			 */
+			custDAO.findAllCustomer();
+
+			System.out.println("SQLExceptionがスローされませんでした。");
 
 		} catch (SQLException e) {
 			System.out.println("SQLExceptionがスローされました。");
