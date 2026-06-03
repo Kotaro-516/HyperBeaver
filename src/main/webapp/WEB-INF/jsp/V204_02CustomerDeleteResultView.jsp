@@ -10,136 +10,53 @@
 <head>
 <meta charset="UTF-8">
 <title>得意先削除結果画面</title>
-
 <style>
-/* 削除結果画面全体 */
-.result-screen {
-	min-height: 540px;
-	padding-top: 20px;
-	text-align: center;
-}
-
-/* 画面中央の表示エリア */
-.result-content {
-	width: 560px;
-	margin: 0 auto;
-	text-align: center;
-}
-
-/* タイトル */
-.result-title {
-	margin: 0 0 30px 0;
-}
-
-/* 完了メッセージ */
-.complete-message {
-	display: inline-block;
-	margin-bottom: 28px;
-	padding: 14px 24px;
-	border: 1px solid #000000;
-	font-size: 20px;
-}
-
-/* 削除結果テーブル */
-.result-table {
-	width: 350px;
-	margin: 0 auto;
-	border-collapse: collapse;
-	text-align: left;
-	font-size: 16px;
-}
-
-.result-table th,
-.result-table td {
-	border: 1px solid #000000;
-	padding: 5px 8px;
-}
-
-.result-table th {
-	width: 125px;
-	font-weight: normal;
-}
-
-.result-table td {
-	width: 225px;
-}
-
-/* 戻るボタン */
-.actions {
-	margin-top: 22px;
-	text-align: center;
-}
+.container { position: relative; width: 560px; margin: 30px auto; }
+.login-user { text-align: left; margin-bottom: 20px; }
+.message { margin: 20px 0; font-weight: bold; }
+.detail dt { float: left; clear: left; width: 140px; margin: 6px 0; }
+.detail dd { margin-left: 150px; padding: 6px 0; }
+.actions { position: absolute; top: 0px; right: 0px; }
 </style>
-
 </head>
 <body>
-
-<%-- ハンバーガーメニューおよびログイン従業員情報を表示 --%>
-<jsp:include page="Header.jsp" />
-
-<div class="result-screen">
-	<div class="result-content">
-
-		<h2 class="result-title">得意先削除結果画面</h2>
-
-		<div class="complete-message">
-			<c:choose>
-				<c:when test="${requestScope.result}">
-					得意先情報を削除しました。
-				</c:when>
-				<c:otherwise>
-					得意先情報の削除に失敗しました。
-				</c:otherwise>
-			</c:choose>
-		</div>
-
-		<table class="result-table">
-			<tr>
-				<th>得意先コード</th>
-				<td><c:out value="${requestScope.customer.custCode}" /></td>
-			</tr>
-			<tr>
-				<th>得意先名</th>
-				<td><c:out value="${requestScope.customer.custName}" /></td>
-			</tr>
-			<tr>
-				<th>電話番号</th>
-				<td><c:out value="${requestScope.customer.telNo}" /></td>
-			</tr>
-			<tr>
-				<th>郵便番号</th>
-				<td><c:out value="${requestScope.customer.postalCode}" /></td>
-			</tr>
-			<tr>
-				<th>住所</th>
-				<td><c:out value="${requestScope.customer.address}" /></td>
-			</tr>
-			<tr>
-				<th>割引率</th>
-				<td>
-					<fmt:formatNumber value="${requestScope.customer.discountRate}"
-					                  minFractionDigits="1"
-					                  maxFractionDigits="1" />%
-				</td>
-			</tr>
-		</table>
-
-		<div class="actions">
-			<form action="/jsys_sales/jsysFC" method="post">
-				<button type="submit" name="buttonId" value="c300">
-					得意先削除へ
-				</button>
-			</form>
-		</div>
-
-	</div>
+<div class="container">
+    <div class="login-user">
+        従業員番号：<c:out value="${sessionScope.loginEmployee.empNo}" /><br>
+        従業員氏名：<c:out value="${sessionScope.loginEmployee.empName}" />
+    </div>
+    
+    <h2>得意先削除結果画面</h2>
+    <div class="message">
+        <c:choose>
+            <c:when test="${requestScope.result}">
+                得意先情報を削除しました。
+            </c:when>
+            <c:otherwise>
+                得意先情報の削除に失敗しました。
+            </c:otherwise>
+        </c:choose>
+    </div>
+    
+    <dl class="detail">
+        <dt>得意先コード</dt><dd><c:out value="${requestScope.customer.custCode}" /></dd>
+        <dt>得意先名</dt><dd><c:out value="${requestScope.customer.custName}" /></dd>
+        <dt>電話番号</dt><dd><c:out value="${requestScope.customer.telNo}" /></dd>
+        <dt>郵便番号</dt><dd><c:out value="${requestScope.customer.postalCode}" /></dd>
+        <dt>住所</dt><dd><c:out value="${requestScope.customer.address}" /></dd>
+        <dt>割引率</dt>
+        <dd>
+            <fmt:formatNumber value="${requestScope.customer.discountRate}"
+                              minFractionDigits="1"
+                              maxFractionDigits="1" />％
+        </dd>
+    </dl>
+    
+    <div class="actions">
+        <form action="/jsys_sales/jsysFC" method="post">
+            <button type="submit" name="buttonId" value="c300">得意先削除へ</button>
+        </form>
+    </div>
 </div>
-
-<%-- ヘルプボタンを表示 --%>
-<jsp:include page="Help.jsp">
-	<jsp:param name="title" value="得意先削除結果の操作ヘルプ" />
-	<jsp:param name="content" value="削除された得意先の詳細情報が表示されています。<br>「得意先削除へ」をクリックすると削除画面に戻ることができます。" />
-</jsp:include>
-
 </body>
 </html>
