@@ -72,7 +72,7 @@ public class CustomerDAO {
 	 * @throws SQLException データベースアクセス処理で例外が発生した場合
 	 */
 	public Customer findCustomerByTelNo(String telNo) throws SQLException {
-		String sql = "SELECT customer_code, customer_name, customer_telNo, customer_postalCode, customer_address, discount_rate FROM customer WHERE customer_telNo = ?";
+		String sql = "SELECT customer_code, customer_name, customer_telNo, customer_postalCode, customer_address, discount_rate, delete_flag FROM customer WHERE customer_telNo = ?";
 		PreparedStatement stmt = null;
 		ResultSet res = null;
 		Customer customer = null;
@@ -92,7 +92,9 @@ public class CustomerDAO {
 						res.getString("customer_telNo"), res.getString("customer_postalCode"),
 						res.getString("customer_address"), res.getDouble("discount_rate")
 						);
+				customer.setDeleted(res.getBoolean("delete_flag"));
 			}
+
 
 		} finally {
 			// クローズ処理
@@ -216,5 +218,29 @@ public class CustomerDAO {
 		}
 		return customerList;
 	}
+
+	/////////////////////////////////////////////
+	public int restoreCustomer(String custCode) throws SQLException {
+
+	    String sql =
+	        "UPDATE customer SET delete_flag = 0 " +
+	        "WHERE customer_code = ? AND delete_flag = 1";
+
+	    PreparedStatement stmt = null;
+	    int count = 0;
+
+	    try {
+	        stmt = con.prepareStatement(sql);
+	        stmt.setString(1, custCode);
+
+	        count = stmt.executeUpdate();
+
+	    } finally {
+	        if (stmt != null) stmt.close();
+	    }
+
+	    return count;
+	}
+
 
 }

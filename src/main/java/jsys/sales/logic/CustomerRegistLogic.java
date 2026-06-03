@@ -42,15 +42,38 @@ public class CustomerRegistLogic {
 			// 得意先情報登録処理と得意先採番更新処理を
 			// 同一トランザクション内で実行するため、自動コミットを解除する
 			con.setAutoCommit(false);
-
 			// DAOを生成し、電話番号に該当する得意先情報を検索する
 			CustomerDAO customerDAO = new CustomerDAO(con);
-			Customer duplicateCustomer = customerDAO.findCustomerByTelNo(customer.getTelNo());
+			Customer duplicateCustomer =
+			        customerDAO.findCustomerByTelNo(customer.getTelNo());
 
-			// 同一電話番号の得意先が存在する場合、業務エラーを発生させる
+			// ✅ ✅ Restore logic
 			if (duplicateCustomer != null) {
-				throw new SalesBusinessException("同一電話番号の得意先は既に登録されています。");
+
+			    // ✅ CASE: deleted → restore
+			    if (duplicateCustomer.isDeleted()) {
+
+			        int rows = customerDAO.restoreCustomer(
+			                duplicateCustomer.getCustCode());
+
+			        if (rows != 1) {
+			            throw new SalesSystemException(
+			                "システムエラーが発生しました。管理者に連絡してください。"
+			            );
+			        }
+
+			        // ✅ commit restore
+			        con.commit();
+
+			        return duplicateCustomer;
+			    }
+
+			    // ✅ CASE: already active → error
+			    throw new SalesBusinessException(
+			        "同一電話番号の得意先は既に登録されています。"
+			    );
 			}
+
 
 			// DAOを生成し、得意先採番情報を取得する
 			CustomerNumberingDAO numberingDAO = new CustomerNumberingDAO(con);

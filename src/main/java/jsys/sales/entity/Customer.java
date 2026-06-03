@@ -142,4 +142,14 @@ public class Customer implements Serializable{
 	public void setDiscountRate(double discountRate) {
 		this.discountRate = discountRate;
 	}
+
+	private boolean deleted;
+
+	public boolean isDeleted() {
+	    return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+	    this.deleted = deleted;
+	}
 }
