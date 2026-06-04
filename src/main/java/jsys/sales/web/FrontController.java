@@ -46,7 +46,7 @@ public class FrontController extends HttpServlet {
 				// セッションが無効、またはログイン情報がない場合はログイン画面に強制遷移
 				request.setAttribute("errorMessage", "セッションが無効です。ログインしてください。");
 				page = "V100_01LoginEmployee.jsp";
-				
+
 				// 結果画面に転送して終了
 				RequestDispatcher rd = request.getRequestDispatcher(path + page);
 				rd.forward(request, response);
@@ -89,6 +89,16 @@ public class FrontController extends HttpServlet {
 			case "c310":
 				// 売上集計メニューへ遷移
 				page = "V300_01CustomerSummaryMenu.jsp";
+				break;
+			case "c311":
+				// 月別受注集計画面へ遷移
+				page = "V301_01MonthlyOrderSummary.jsp";
+				break;
+
+			case "c312":
+				// 月別受注集計処理を実行する
+				action = new MonthlyOrderSummaryAction();
+				page = action.execute(request);
 				break;
 			case "c300":
 				// 得意先削除画面へ遷移

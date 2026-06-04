@@ -11,7 +11,11 @@
 
 <div style="text-align:center">
 	<h2>売上集計メニュー</h2>
-	<p>※ 売上集計システムは現在開発中です。</p>
+	<form action="${pageContext.request.contextPath}/jsysFC" method="post">
+	<button type="submit" name="buttonId" value="c311">月別受注集計</button>
+	<button type="button" disabled>年次受注集計</button>
+	<button type="button" disabled>商品別受注集計</button>
+</form>
 	<form action="/jsys_sales/jsysFC" method="post">
 		<button type="submit" name="buttonId" value="c100">メインメニューへ戻る</button>
 	</form>
