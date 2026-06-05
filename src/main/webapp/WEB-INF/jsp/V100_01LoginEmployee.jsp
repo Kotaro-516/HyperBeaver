@@ -24,7 +24,7 @@
 						</div>
 						<div>
 							<form action="/jsys_sales/jsysFC" method="post">
-								従業員番号：<input type="text" name="empNo" value="<c:out value="${param.empNo}" />" placeholder="例：A99999"><br>
+								従業員番号：<input type="text" name="empNo" value="<c:out value="${param.empNo}" />" placeholder="例：A99999" autocomplete = off><br>
 								パスワード：<input type="password" name="password" value="<c:out value="${param.password}" />" ><br>
 								<button type="submit" name="buttonId" value="c001">ログイン</button>
 							</form>
