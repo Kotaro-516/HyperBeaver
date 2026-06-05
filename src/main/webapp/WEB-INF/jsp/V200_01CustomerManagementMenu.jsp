@@ -9,20 +9,41 @@
 <head>
 <meta charset="UTF-8">
 <title>得意先管理メニュー</title>
+<style>
+	.menu-area {
+		text-align: center;
+	}
+
+	.menu-buttons {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 16px;
+		margin: 30px auto;
+	}
+
+	.menu-buttons button {
+		width: 220px;
+		padding: 10px 18px;
+	}
+</style>
 </head>
 <body>
 <jsp:include page="Header.jsp" />
-<div style="text-align:center">
-<h2>得意先管理メニュー</h2>
 
-<form action="/jsys_sales/jsysFC" method="post">
- <button type="submit" name="buttonId" value="c100">メインメニューへ戻る</button><br>
- <button type="submit" name="buttonId" value="c101">得意先検索</button><br>
- <button type="submit" name="buttonId" value="c200">得意先登録</button><br>
- <button type="submit" name="buttonId" value="c300">得意先削除</button><br>
- <button type="submit" name="buttonId" value="c400" disabled="disabled">得意先変更</button><br>
- <button type="submit" name="buttonId" value="c500">得意先一覧</button><br>
-</form>
+<div class="menu-area">
+	<h2>得意先管理メニュー</h2>
+
+	<form action="${pageContext.request.contextPath}/jsysFC" method="post">
+		<div class="menu-buttons">
+			<button type="submit" name="buttonId" value="c101">得意先検索</button>
+			<button type="submit" name="buttonId" value="c200">得意先登録</button>
+			<button type="submit" name="buttonId" value="c300">得意先削除</button>
+			<button type="submit" name="buttonId" value="c400" disabled="disabled">得意先変更</button>
+			<button type="submit" name="buttonId" value="c500">得意先一覧</button>
+			<button type="submit" name="buttonId" value="c100">メインメニューへ戻る</button>
+		</div>
+	</form>
 </div>
 
 <jsp:include page="Help.jsp">

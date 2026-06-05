@@ -5,15 +5,36 @@
 <head>
 <meta charset="UTF-8">
 <title>システム選択</title>
+<style>
+	.menu-area {
+		text-align: center;
+	}
+
+	.menu-buttons {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 18px;
+		margin: 30px auto;
+	}
+
+	.menu-buttons button {
+		width: 240px;
+		padding: 10px 18px;
+	}
+</style>
 </head>
 <body>
 <jsp:include page="Header.jsp" />
 
-<div style="text-align:center">
+<div class="menu-area">
 	<h2>システム選択メニュー</h2>
-	<form action="/jsys_sales/jsysFC" method="post">
-		<button type="submit" name="buttonId" value="c110">得意先管理システム</button><br>
-		<button type="submit" name="buttonId" value="c310">売上集計システム</button><br>
+
+	<form action="${pageContext.request.contextPath}/jsysFC" method="post">
+		<div class="menu-buttons">
+			<button type="submit" name="buttonId" value="c110">得意先管理システム</button>
+			<button type="submit" name="buttonId" value="c310">売上集計システム</button>
+		</div>
 	</form>
 </div>
 
