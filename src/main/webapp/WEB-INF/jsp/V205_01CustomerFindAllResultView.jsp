@@ -210,7 +210,11 @@ function selectRow(radio, rowId) {
 ========================= -->
 <jsp:include page="/WEB-INF/jsp/Help.jsp">
     <jsp:param name="title" value="得意先一覧の操作ヘルプ" />
-    <jsp:param name="content" value="得意先一覧を表示する画面です。ラジオボタンで選択し、各操作を行ってください。" />
+    <jsp:param name="content" value="登録されている得意先情報を一覧で確認できます。<br>
+	削除する場合は、左側のラジオボタンで対象の得意先を1件選択し、「削除」ボタンをクリックしてください。<br>
+	「登録」ボタンをクリックすると、得意先登録画面へ移動します。<br>
+	「変更」ボタンは今回使用できません。<br>
+	一覧が多い場合は、表の中をスクロールして確認してください。" />
 </jsp:include>
 
 </body>
